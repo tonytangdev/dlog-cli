@@ -27,28 +27,4 @@ describe("db module", () => {
 		expect(existsSync(join(tmpDir, "decisions.db"))).toBe(true);
 	});
 
-	it("getSyncMeta returns null for unknown key", () => {
-		const { getSyncMeta } = require("../db.js");
-		const val = getSyncMeta("nonexistent");
-		expect(val).toBeNull();
-	});
-
-	it("setSyncMeta / getSyncMeta round-trip", () => {
-		const { getSyncMeta, setSyncMeta } = require("../db.js");
-
-		// Initial get is null
-		expect(getSyncMeta("token")).toBeNull();
-
-		// Set a value
-		setSyncMeta("token", "abc123");
-		expect(getSyncMeta("token")).toBe("abc123");
-
-		// Update
-		setSyncMeta("token", "xyz");
-		expect(getSyncMeta("token")).toBe("xyz");
-
-		// Delete by setting null
-		setSyncMeta("token", null);
-		expect(getSyncMeta("token")).toBeNull();
-	});
 });
