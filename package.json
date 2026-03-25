@@ -1,0 +1,48 @@
+{
+	"name": "@tonytangdev/dlog",
+	"version": "0.4.0",
+	"description": "Local-first CLI for logging and searching decisions",
+	"type": "module",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tonytangdev/dlog-cli"
+	},
+	"keywords": [
+		"cli",
+		"decisions",
+		"architecture",
+		"logging",
+		"adr",
+		"local-first"
+	],
+	"bin": {
+		"dlog": "./dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc --watch",
+		"test": "bun test",
+		"lint": "biome lint .",
+		"format": "biome format --write .",
+		"check": "biome check .",
+		"prepublishOnly": "npm run build"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.7",
+		"@types/better-sqlite3": "^7.6.13",
+		"@types/bun": "latest",
+		"@types/node": "^20.0.0",
+		"drizzle-kit": "^0.31.10",
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"@inquirer/prompts": "^8.3.0",
+		"better-sqlite3": "^12.8.0",
+		"commander": "^12.1.0",
+		"drizzle-orm": "^0.45.1"
+	}
+}
