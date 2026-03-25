@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import { eq } from "drizzle-orm";
-import { handleCommandError } from "../lib/errors.js";
 import { getDb } from "../lib/db.js";
+import { handleCommandError } from "../lib/errors.js";
 import { formatDecisionDetail } from "../lib/format.js";
 import { resolveIndex } from "../lib/result-cache.js";
 import { decisions } from "../lib/schema.js";

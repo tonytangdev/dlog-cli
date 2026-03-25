@@ -115,4 +115,3 @@ export function getDb(): DbInstance {
 export function resetDb(): void {
 	_db = null;
 }
-

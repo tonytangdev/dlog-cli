@@ -26,5 +26,4 @@ describe("db module", () => {
 		getDb();
 		expect(existsSync(join(tmpDir, "decisions.db"))).toBe(true);
 	});
-
 });

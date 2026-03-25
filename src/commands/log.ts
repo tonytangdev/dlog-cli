@@ -1,6 +1,6 @@
 import { Command } from "commander";
-import { handleCommandError } from "../lib/errors.js";
 import { getDb } from "../lib/db.js";
+import { handleCommandError } from "../lib/errors.js";
 import { decisions } from "../lib/schema.js";
 
 function readStdin(): Promise<string> {

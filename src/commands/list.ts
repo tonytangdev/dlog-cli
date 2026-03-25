@@ -1,8 +1,8 @@
 import { select } from "@inquirer/prompts";
 import { Command } from "commander";
 import { desc, eq, like } from "drizzle-orm";
-import { handleCommandError } from "../lib/errors.js";
 import { getDb } from "../lib/db.js";
+import { handleCommandError } from "../lib/errors.js";
 import { formatSearchResults } from "../lib/format.js";
 import { saveLastResults } from "../lib/result-cache.js";
 import { decisions } from "../lib/schema.js";
