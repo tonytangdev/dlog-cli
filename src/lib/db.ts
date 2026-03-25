@@ -2,7 +2,6 @@ import { mkdirSync } from "node:fs";
 import { createRequire } from "node:module";
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { eq } from "drizzle-orm";
 import type { BaseSQLiteDatabase } from "drizzle-orm/sqlite-core";
 import * as schema from "./schema.js";
 
@@ -60,13 +59,7 @@ function createDb(dbPath?: string) {
       updated_at INTEGER NOT NULL,
       deleted_at INTEGER,
       remote_id TEXT,
-      sync_status TEXT NOT NULL DEFAULT 'pending',
       last_synced_at INTEGER
-    );
-
-    CREATE TABLE IF NOT EXISTS sync_meta (
-      key TEXT PRIMARY KEY,
-      value TEXT
     );
 
     CREATE VIRTUAL TABLE IF NOT EXISTS decisions_fts USING fts5(
@@ -102,6 +95,9 @@ function createDb(dbPath?: string) {
     END;
   `);
 
+	// Migration: drop sync-related tables from existing DBs
+	sqlite.exec(`DROP TABLE IF EXISTS sync_meta`);
+
 	return drizzleFn(sqlite, { schema }) as DbInstance;
 }
 
@@ -120,24 +116,3 @@ export function resetDb(): void {
 	_db = null;
 }
 
-export function getSyncMeta(key: string): string | null {
-	const db = getDb();
-	const row = db
-		.select()
-		.from(schema.syncMeta)
-		.where(eq(schema.syncMeta.key, key))
-		.get();
-	return row?.value ?? null;
-}
-
-export function setSyncMeta(key: string, value: string | null): void {
-	const db = getDb();
-	if (value === null) {
-		db.delete(schema.syncMeta).where(eq(schema.syncMeta.key, key)).run();
-	} else {
-		db.insert(schema.syncMeta)
-			.values({ key, value })
-			.onConflictDoUpdate({ target: schema.syncMeta.key, set: { value } })
-			.run();
-	}
-}
