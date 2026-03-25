@@ -40,13 +40,11 @@ export function createDeleteCommand(): Command {
 					.set({
 						status: "archived",
 						deletedAt: now,
-						syncStatus: "modified",
 						updatedAt: now,
 					})
 					.where(inArray(decisions.id, resolvedIds))
 					.run();
 
-				// TODO: maybeSync()
 				console.log(`Deleted ${resolvedIds.length} decision(s).`);
 			} catch (error) {
 				handleCommandError(error, "deleting decisions");

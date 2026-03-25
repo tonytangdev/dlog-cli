@@ -25,8 +25,6 @@ export function createListCommand(): Command {
 					const status = options.deleted ? "archived" : "active";
 					let offset = 0;
 
-					// TODO: maybeSync()
-
 					while (true) {
 						const rows = await db
 							.select()

@@ -165,7 +165,6 @@ export function createEditCommand(): Command {
 					process.exit(0);
 				}
 
-				// TODO: maybeSync()
 				db.update(decisions)
 					.set({
 						project: patch.project !== undefined ? patch.project : row.project,
@@ -179,7 +178,6 @@ export function createEditCommand(): Command {
 								: row.alternatives,
 						tags:
 							patch.tags !== undefined ? JSON.stringify(patch.tags) : row.tags,
-						syncStatus: "modified",
 						updatedAt: new Date(),
 					})
 					.where(eq(decisions.id, resolvedId))

@@ -75,13 +75,11 @@ export function createLogCommand(): Command {
 								? JSON.stringify(options.tags.split(",").map((s) => s.trim()))
 								: null,
 							status: "active",
-							syncStatus: "pending",
 							createdAt: now,
 							updatedAt: now,
 						})
 						.run();
 
-					// TODO: maybeSync()
 					console.log(`Decision logged (id: ${id}).`);
 				} catch (error) {
 					handleCommandError(error, "logging decision");

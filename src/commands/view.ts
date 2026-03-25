@@ -51,7 +51,6 @@ export function createViewCommand(): Command {
 					process.exit(1);
 				}
 
-				// TODO: maybeSync()
 				console.log(
 					formatDecisionDetail({
 						id: row.id,

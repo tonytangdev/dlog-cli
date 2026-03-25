@@ -40,13 +40,11 @@ export function createRestoreCommand(): Command {
 					.set({
 						status: "active",
 						deletedAt: null,
-						syncStatus: "modified",
 						updatedAt: now,
 					})
 					.where(inArray(decisions.id, resolvedIds))
 					.run();
 
-				// TODO: maybeSync()
 				console.log(`Restored ${resolvedIds.length} decision(s).`);
 			} catch (error) {
 				handleCommandError(error, "restoring decisions");

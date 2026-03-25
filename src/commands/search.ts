@@ -24,7 +24,6 @@ export function createSearchCommand(): Command {
 						return;
 					}
 
-					// TODO: maybeSync()
 					console.log(formatSearchResults(results));
 					await saveLastResults(results.map((r) => r.id));
 					console.log(
