@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { handleCommandError } from "../lib/auth.js";
+import { handleCommandError } from "../lib/errors.js";
 import { formatSearchResults } from "../lib/format.js";
 import { saveLastResults } from "../lib/result-cache.js";
 import { searchDecisions } from "../lib/search.js";

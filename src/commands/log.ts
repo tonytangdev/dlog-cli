@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { handleCommandError } from "../lib/auth.js";
+import { handleCommandError } from "../lib/errors.js";
 import { getDb } from "../lib/db.js";
 import { decisions } from "../lib/schema.js";
 

@@ -1,6 +1,6 @@
 import { Command } from "commander";
 import { eq } from "drizzle-orm";
-import { handleCommandError } from "../lib/auth.js";
+import { handleCommandError } from "../lib/errors.js";
 import { getDb } from "../lib/db.js";
 import { formatDecisionDetail } from "../lib/format.js";
 import { resolveIndex } from "../lib/result-cache.js";
