@@ -15,15 +15,5 @@ export const decisions = sqliteTable("decisions", {
 	updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
 	deletedAt: integer("deleted_at", { mode: "timestamp" }),
 	remoteId: text("remote_id"),
-	syncStatus: text("sync_status", {
-		enum: ["pending", "synced", "modified"],
-	})
-		.notNull()
-		.default("pending"),
 	lastSyncedAt: integer("last_synced_at", { mode: "timestamp" }),
-});
-
-export const syncMeta = sqliteTable("sync_meta", {
-	key: text("key").primaryKey(),
-	value: text("value"),
 });
